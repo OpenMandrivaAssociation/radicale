@@ -4,7 +4,7 @@
 %define oname	Radicale
 %define name	radicale
 %define version	0.4
-%define rel	1
+%define rel	2
 
 Summary:	Simple calendar server
 Name:		%{name}
