@@ -4,7 +4,9 @@
 %define oname	Radicale
 %define name	radicale
 %define version	0.4
-%define rel	2
+%define rel	3
+
+%define _radicaledir %{_localstatedir}/lib/radicale
 
 Summary:	Simple calendar server
 Name:		%{name}
@@ -60,6 +62,9 @@ cp %{SOURCE2} .
 rm -rf %{buildroot}
 python setup.py install --root=%{buildroot}
 
+#dir for calendars
+install -dm0755 %{buildroot}%{_radicaledir}/calendars
+
 #config
 install -Dm0644 config %{buildroot}%{_sysconfdir}/%{name}/config
 
@@ -83,6 +88,7 @@ rm -rf %{buildroot}
 %doc NEWS README TODO config.default README.urpmi
 %{_bindir}/%{name}
 %{_initrddir}/%{name} 
+%{_radicaledir}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/config
 %config(noreplace) %{_sysconfdir}/%{name}/users
