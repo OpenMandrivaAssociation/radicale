@@ -20,6 +20,7 @@ Group:		Office
 License:	GPLv3+
 URL:		http://radicale.org/
 BuildArch:	noarch
+BuildRequires:	python-devel
 Requires(pre):	rpm-helper
 Requires(preun):	rpm-helper
 Requires:	python-%{name} = %{version}-%{release}
