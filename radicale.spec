@@ -3,10 +3,10 @@
 
 %define oname	Radicale
 %define name	radicale
-%define version	0.4
-%define rel	3
+%define version	0.5
+%define rel	1
 
-%define _radicaledir %{_localstatedir}/lib/radicale
+%define _radicaledir %{_localstatedir}/lib/%{name}
 
 Summary:	Simple calendar server
 Name:		%{name}
@@ -21,11 +21,10 @@ License:	GPLv3+
 URL:		http://radicale.org/
 BuildArch:	noarch
 BuildRequires:	python-devel
-Requires(pre):	rpm-helper
+Requires(pre):		rpm-helper
 Requires(preun):	rpm-helper
-Requires:	python-%{name} = %{version}-%{release}
+Obsoletes:	python-%{name}
 Suggests:	python-OpenSSL
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The Radicale Project is a complete CalDAV calendar server solution. It can
@@ -33,21 +32,6 @@ store multiple calendars.
 
 Calendars are available from both local and distant accesses, possibly
 limited through authentication policies.
-
-This package contains the radicale daemon.
-
-%package -n python-%{name}
-Summary:	Simple calendar server Python module
-Group:		Development/Python
-
-%description -n python-%{name}
-The Radicale Project is a complete CalDAV calendar server solution. It can
-store multiple calendars.
-
-Calendars are available from both local and distant accesses, possibly
-limited through authentication policies.
-
-This package contains the Radicale Python module. 
 
 %prep
 %setup -q -n %{oname}-%{version}
@@ -93,9 +77,5 @@ rm -rf %{buildroot}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/config
 %config(noreplace) %{_sysconfdir}/%{name}/users
-
-%files -n python-%{name}
-%defattr(-,root,root)
-%doc NEWS README TODO
 %{python_sitelib}/%{name}
 %{python_sitelib}/%{oname}-%{version}-py%{pyver}.egg-info
