@@ -4,7 +4,7 @@
 %define oname	Radicale
 %define name	radicale
 %define version	0.5
-%define rel	1
+%define rel	2
 
 %define _radicaledir %{_localstatedir}/lib/%{name}
 
