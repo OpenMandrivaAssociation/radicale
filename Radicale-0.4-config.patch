@@ -1,0 +1,42 @@
+diff -p -up ./config.default ./config
+--- ./config.default	2010-08-07 14:22:58.000000000 +0200
++++ ./config	2010-12-17 20:42:04.000000000 +0100
+@@ -1,9 +1,18 @@
+ # Config file for Radicale - A simple calendar server
+ #
+-# Place it into /etc/radicale/config (global) 
+-# or ~/.config/radicale/config (user)
++# This is a Mandriva specific configuration file. The default
++# configuration file is in /usr/share/doc/radicale/config.default
++# 
++# NOTE:
++# Radicale is intended to run in Mandriva as a service,
++# not started by a regular user. The service is started automatically
++# on boot time or it can be started manually with command
++# 'service radicale start' as root.
+ #
+-# The current values are the default ones
++# NOTE:
++# To run Radicale as a normal user (and to override the global settings),
++# copy the default config file to ~/.config/radicale/config,
++# modify it and execute /usr/bin/radicale.
+ 
+ [server]
+ # CalDAV server hostname, empty for all hostnames
+@@ -11,7 +20,7 @@ host =
+ # CalDAV server port
+ port = 5232
+ # Daemon flag
+-daemon = False
++daemon = True
+ # SSL flag, enable HTTPS protocol
+ ssl = False
+ # SSL certificate path (if needed)
+@@ -40,6 +49,6 @@ encryption = crypt
+ [storage]
+ # Folder for storing local calendars,
+ # created if not present
+-folder = ~/.config/radicale/calendars
++folder = /var/lib/radicale/calendars
+ 
+ # vim:ft=cfg
