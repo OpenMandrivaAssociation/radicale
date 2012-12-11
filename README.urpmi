@@ -1,0 +1,11 @@
+NOTE:
+Radicale is intended to run in Mandriva as a service, not started by a
+regular user. The service is started automatically on boot time or it
+can be started manually with command 'service radicale start' as root.
+
+To run Radicale as a normal user (and to override the global settings), copy
+the default config file to ~/.config/radicale/config, modify it (if needed)
+and execute /usr/bin/radicale.
+
+The default configuration file is in /usr/share/doc/radicale/config.default
+

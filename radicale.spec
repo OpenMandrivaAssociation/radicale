@@ -3,19 +3,17 @@
 
 %define oname	Radicale
 %define name	radicale
-%define version	0.5
-%define rel	2
 
 %define _radicaledir %{_localstatedir}/lib/%{name}
 
 Summary:	Simple calendar server
 Name:		%{name}
-Version:	%{version}
-Release:	%mkrel %{rel}
+Version:	0.7.1
+Release:	1
 Source0:	http://radicale.org/src/%{name}/%{oname}-%{version}.tar.gz
 Source1:	radicale.init
 Source2:	README.urpmi
-Patch0:		Radicale-0.4-config.patch
+Patch0:		Radicale-0.7-config.patch
 Group:		Office
 License:	GPLv3+
 URL:		http://radicale.org/
@@ -44,7 +42,6 @@ cp %{SOURCE2} .
 #nothing to do
 
 %install
-rm -rf %{buildroot}
 python setup.py install --root=%{buildroot}
 
 #dir for calendars
@@ -65,12 +62,8 @@ install -Dm0755 %{SOURCE1} %{buildroot}%{_initrddir}/%{name}
 %preun
 %_preun_service %{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
-%doc NEWS README TODO config.default README.urpmi
+%doc README config.default README.urpmi
 %{_bindir}/%{name}
 %{_initrddir}/%{name} 
 %{_radicaledir}
@@ -78,4 +71,31 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/%{name}/config
 %config(noreplace) %{_sysconfdir}/%{name}/users
 %{python_sitelib}/%{name}
-%{python_sitelib}/%{oname}-%{version}-py%{pyver}.egg-info
+%{python_sitelib}/%{oname}-%{version}-py%{py_ver}.egg-info
+
+
+%changelog
+* Wed Jun 01 2011 Jani Välimaa <wally@mandriva.org> 0.5-2mdv2011.0
++ Revision: 682370
+- rebuild to obsolete old pkgs
+
+* Sun Apr 10 2011 Jani Välimaa <wally@mandriva.org> 0.5-1
++ Revision: 652344
+- new version 0.5
+- merge python parts to main package
+- obsolete old python subpackage
+- add python-devel BR
+
+* Sun Dec 19 2010 Jani Välimaa <wally@mandriva.org> 0.4-3mdv2011.0
++ Revision: 623156
+- create dir for calendars
+
+* Fri Dec 17 2010 Jani Välimaa <wally@mandriva.org> 0.4-2mdv2011.0
++ Revision: 622753
+- fix typos in a several places
+- fix description in init file
+
+* Fri Dec 17 2010 Jani Välimaa <wally@mandriva.org> 0.4-1mdv2011.0
++ Revision: 622738
+- import radicale
+
