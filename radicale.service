@@ -1,0 +1,10 @@
+[Unit]
+Description=Simple CalDAV server
+After=network.target
+ 
+[Service]
+ExecStart=/usr/bin/radicale
+Type=forking
+ 
+[Install]
+WantedBy=multi-user.target
