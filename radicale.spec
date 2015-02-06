@@ -5,7 +5,7 @@
 Summary:	Simple calendar server
 Name:		radicale
 Version:	0.7.1
-Release:	3
+Release:	4
 Source0:	http://radicale.org/src/%{name}/%{oname}-%{version}.tar.gz
 Source1:	radicale.service
 Source2:	README.urpmi
