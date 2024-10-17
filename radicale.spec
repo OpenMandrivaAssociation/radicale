@@ -12,7 +12,7 @@ Source2:	README.urpmi
 Patch0:		Radicale-0.7-config.patch
 Group:		Office
 License:	GPLv3+
-URL:		http://radicale.org/
+URL:		https://radicale.org/
 BuildArch:	noarch
 BuildRequires:	python-devel
 Requires(pre):		rpm-helper
